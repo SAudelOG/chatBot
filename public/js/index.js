@@ -1,13 +1,11 @@
-// var chat
 var $chatWindow = $(".chatbot-window");
-var $qInput = $("#user-input-q");
-var $qClear = $("#clear-q");
 
-var BotWindow = function($chatWindow, $qInput, $qClear) {
+var BotWindow = function($chatWindow) {
   var self = this;
   self.$chatWindow = $chatWindow;
-  self.$qInput = $qInput;
-  self.$qClear = $qClear;
+  self.$qInput = self.$chatWindow.find('#user-input-q');
+  self.$qClear = self.$chatWindow.find('#clear-q');
+  self.$conversationBubble = self.$chatWindow.find(".conversation-body");
   self.API_END_POINT = 'http://192.168.100.74:3000';
 
 
@@ -20,20 +18,16 @@ var BotWindow = function($chatWindow, $qInput, $qClear) {
           q : queryMessage
       },
       error: function(e) {
-        debugger;
-        console.log(e);
         cb(e);
       },
       success: function(response) {
-        debugger;
         cb(undefined, response);
       },
     });
   }
 
   self.renderMessage = function(type, msg) {
-    console.log('you need to render this message');
-    console.log(msg);
+    self.$conversationBubble.append('<div class="conversation-bubble '+ type +'-bubble"><p>'+ msg +'</p></div>')
   };
 
   // Initialize Listeners
@@ -50,8 +44,9 @@ var BotWindow = function($chatWindow, $qInput, $qClear) {
       // clear Input
       $el.val('');
       // send message to the UI
-      self.renderMessage('user', $el.val());
+      self.renderMessage('user', msg);
       // render the response
+      // TODO: add class to show a response wating class
       self.sendMessage(msg, function(err, response) {
         if (err) throw new Error(err);
         // Send response message to the UI
@@ -64,4 +59,4 @@ var BotWindow = function($chatWindow, $qInput, $qClear) {
 }
 
 // Initialize botWindow
-var botWindow = new BotWindow($chatWindow, $qInput, $qClear);
+var botWindow = new BotWindow($chatWindow);
