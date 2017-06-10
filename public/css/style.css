@@ -4,16 +4,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   position: relative;
   min-height: 780px;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#05377e+0,1e9afc+100 */
-  background: #05377e;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e9afc+0,05377e+100 */
+  background: #1e9afc;
   /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #05377e 0%, #1e9afc 100%);
+  background: -moz-linear-gradient(-45deg, #1e9afc 0%, #05377e 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #05377e 0%, #1e9afc 100%);
+  background: -webkit-linear-gradient(-45deg, #1e9afc 0%, #05377e 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #05377e 0%, #1e9afc 100%);
+  background: linear-gradient(135deg, #1e9afc 0%, #05377e 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#05377e', endColorstr='#1e9afc', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e9afc', endColorstr='#05377e', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 }
 body * {
@@ -22,6 +22,9 @@ body * {
 a {
   color: #00B7FF;
 }
+p {
+  margin-top: 0;
+}
 button {
   background: none;
   border: none;
@@ -29,9 +32,15 @@ button {
 button:hover {
   cursor: pointer;
 }
+button:focus,
+input:focus,
+button:active,
+input:active {
+  outline: none;
+}
 .chatbot-window {
   background: white;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   bottom: 0;
   border-radius: 4px 4px 0 0;
   display: block;
@@ -48,21 +57,22 @@ button:hover {
   width: 100%;
 }
 .chatbot-window header button {
-  color: #bdbdbd;
+  color: #ededed;
   float: right;
   font-size: 18px;
+  margin: 5px;
 }
 .chatbot-window header button:hover {
-  color: #707070;
+  color: #1e9afc;
 }
 .chatbot-window .conversation-body {
   display: block;
   position: relative;
-  padding: 80px 0 51px 0;
+  padding: 80px 0 61px 20px;
   width: 100%;
 }
 .chatbot-window .conversation-body .chatbot-avatar {
-  border: 1px solid green;
+  background: #f7f7f7;
   border-radius: 50%;
   display: block;
   height: 60px;
@@ -74,15 +84,48 @@ button:hover {
   width: 60px;
 }
 .chatbot-window .conversation-body .conversation-bubble {
+  background: #ededed;
+  border-radius: 4px;
   float: left;
-  width: 100%;
+  margin-bottom: 20px;
+  max-width: 80%;
+  padding: 10px;
+  position: relative;
+  width: auto;
+}
+.chatbot-window .conversation-body .conversation-bubble:before {
+  background: #ededed;
+  content: "";
+  display: block;
+  height: 8px;
+  position: absolute;
+  top: -3px;
+  left: 6px;
+  width: 8px;
+  transform: rotate(45deg);
+}
+.chatbot-window .conversation-body .conversation-bubble p:last-child {
+  margin-bottom: 0;
+}
+.chatbot-window .conversation-body .conversation-bubble.user-bubble {
+  background: #cde1fe;
+  float: right;
+}
+.chatbot-window .conversation-body .conversation-bubble.user-bubble:before {
+  background: #cde1fe;
+  top: 6px;
+  left: initial;
+  right: -3px;
+  transform: rotate(135deg);
 }
 .chatbot-window footer {
+  background: white;
   border-top: 1px solid #bdbdbd;
   display: block;
   left: 0;
+  overflow: hidden;
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   width: 100%;
 }
 .chatbot-window footer input {
@@ -91,10 +134,6 @@ button:hover {
   font-size: 16px;
   padding: 8px 10px;
   width: calc(100% - 40px);
-}
-.chatbot-window footer input:focus,
-.chatbot-window footer input:active {
-  outline: none;
 }
 .chatbot-window footer button {
   border-left: 1px solid #bdbdbd;
