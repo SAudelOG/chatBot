@@ -3,7 +3,7 @@ body {
   padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   position: relative;
-  min-height: 780px;
+  height: 648px;
 
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e9afc+0,05377e+100 */
   background: #1e9afc; /* Old browsers */
@@ -39,13 +39,15 @@ button, input {
   //box-shadow: 5px -5px 0 rgba(#000, 0.2);
   border: 1px solid #cccccc;
   bottom: 0;
-  border-radius: 4px 4px 0 0;
   display: block;
-  right:50px;
-  padding: 30px 0;
+  left:0;
+  max-height: 80%;
+  overflow-y: scroll;
+  padding: 20px 0 30px 0;
   position: absolute;
-  width: 320px;
+  width: 100%;
   header {
+    border-bottom: 1px solid #ededed;
     display: block;
     left: 0;
     position: absolute;
@@ -62,16 +64,16 @@ button, input {
     }
   }
   .conversation-body {
-    //border: 1px solid red;
     display: block;
     float: left;
-    max-height: 600px;
+    max-height: 590px;
     overflow-y: scroll;
     position: relative;
-    padding: 80px 30px 10px 30px;
+    padding: 80px 30px 20px 30px;
     width: 100%;
     .chatbot-avatar {
       background: #f7f7f7;
+      border: 1px solid #ededed;
       border-radius: 50%;
       display: block;
       height: 60px;
@@ -84,7 +86,6 @@ button, input {
     }
     .conversation-bubble {
       background: #ededed;
-      //border: 1px solid #bdbdbd;
       border-radius: 4px;
       clear: both;
       float: left;
@@ -95,8 +96,6 @@ button, input {
       width: auto;
       &:before {
         background: #ededed;
-        //border-left: 1px solid #bdbdbd;
-        //border-top: 1px solid #bdbdbd;
         content: "";
         display: block;
         height: 8px;
@@ -130,7 +129,7 @@ button, input {
     display: block;
     left: 0;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     width: 100%;
     input {
