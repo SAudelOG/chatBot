@@ -27,7 +27,9 @@ var BotWindow = function($chatWindow) {
   }
 
   self.renderMessage = function(type, msg) {
-    self.$conversationBubble.append('<div class="conversation-bubble '+ type +'-bubble"><p>'+ msg +'</p></div>')
+    self.$conversationBubble.append('<div class="conversation-bubble '+ type +'-bubble"><p>'+ msg +'</p></div>');
+    // Go to the latest message
+    self.$conversationBubble.scrollTop(self.$conversationBubble.prop("scrollHeight"));
   };
 
   // Initialize Listeners
