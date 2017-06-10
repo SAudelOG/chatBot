@@ -3,7 +3,7 @@ body {
   padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   position: relative;
-  height: 648px;
+  height: 667px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e9afc+0,05377e+100 */
   background: #1e9afc;
   /* Old browsers */
@@ -38,6 +38,9 @@ button:active,
 input:active {
   outline: none;
 }
+h1 {
+  margin: 0 0 20px;
+}
 .chatbot-window {
   background: white;
   border: 1px solid #cccccc;
@@ -45,8 +48,8 @@ input:active {
   display: block;
   left: 0;
   max-height: 80%;
-  overflow-y: scroll;
-  padding: 20px 0 30px 0;
+  overflow: hidden;
+  padding: 0 0 34px 0;
   position: absolute;
   width: 100%;
 }
@@ -70,11 +73,28 @@ input:active {
 .chatbot-window .conversation-body {
   display: block;
   float: left;
-  max-height: 590px;
+  max-height: 498px;
   overflow-y: scroll;
-  position: relative;
-  padding: 80px 30px 20px 30px;
+  padding: 20px 30px 20px 30px;
   width: 100%;
+}
+.chatbot-window .conversation-body:before {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+68,ffffff+81,ffffff+100&1+68,0.5+81,0+100 */
+  background: -moz-linear-gradient(top, #ffffff 68%, rgba(255, 255, 255, 0.5) 81%, rgba(255, 255, 255, 0) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #ffffff 68%, rgba(255, 255, 255, 0.5) 81%, rgba(255, 255, 255, 0) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #ffffff 68%, rgba(255, 255, 255, 0.5) 81%, rgba(255, 255, 255, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0);
+  /* IE6-9 */
+  content: "";
+  height: 100px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
 .chatbot-window .conversation-body .chatbot-avatar {
   background: #f7f7f7;
@@ -84,10 +104,11 @@ input:active {
   height: 60px;
   left: 30px;
   margin: 0;
-  position: absolute;
   overflow: hidden;
-  top: 0;
+  position: absolute;
+  top: 20px;
   width: 60px;
+  z-index: 3;
 }
 .chatbot-window .conversation-body .conversation-bubble {
   background: #ededed;
@@ -124,6 +145,77 @@ input:active {
   left: initial;
   right: -3px;
   transform: rotate(135deg);
+}
+.chatbot-window .card-container {
+  float: left;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.chatbot-window .card-container .card {
+  float: left;
+  width: 290px;
+}
+.chatbot-window .card-container .card .card-thumbnail {
+  float: left;
+  margin: 0;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.chatbot-window .card-container .card .card-thumbnail img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 0;
+}
+.chatbot-window .card-container .card .card-thumbnail .hotel-name {
+  background: rgba(0,0,0, 0.5);
+  bottom: 0;
+  color: white;
+  font-size: 22px;
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+.chatbot-window .card-container .card .card-thumbnail .hotel-rating {
+  background: #1e9afc;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  height: 36px;
+  line-height: 36px;
+  overflow: hidden;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  top: 10px;
+  width: 36px;
+}
+.chatbot-window .card-container .card .hotel-class {
+  display: block;
+  float: left;
+  font-size: 18px;
+  margin: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+.chatbot-window .card-container .card .hotel-class .fa {
+  color: #fcba2c;
+}
+.chatbot-window .card-container .card .btn-book {
+  background: #05377e;
+  border-radius: 4px;
+  color: white;
+  font-size: 18px;
+  padding: 10px 8px;
+  text-align: center;
+  width: 100%;
 }
 .chatbot-window footer {
   background: white;
