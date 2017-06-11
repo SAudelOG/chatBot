@@ -1,16 +1,15 @@
 body {
-  margin: 0;
-  padding: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  position: relative;
-  height: 667px;
-
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e9afc+0,05377e+100 */
   background: #1e9afc; /* Old browsers */
   background: -moz-linear-gradient(-45deg, #1e9afc 0%, #05377e 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(-45deg, #1e9afc 0%,#05377e 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg, #1e9afc 0%,#05377e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e9afc', endColorstr='#05377e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  height: 637px;
+  margin: 0;
+  padding: 15px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  position: relative;
 
   * {
     box-sizing: border-box;
@@ -37,40 +36,41 @@ button, input {
 h1 {
   margin: 0 0 20px;
 }
-.chatbot-window {
-  background: white;
-  border: 1px solid #cccccc;
-  bottom: 0;
-  display: block;
-  left:0;
-  max-height: 80%;
-  overflow: hidden;
-  padding: 0 0 34px 0;
-  position: absolute;
+.wrapper {
+  float: left;
   width: 100%;
-  header {
-    border-bottom: 1px solid #ededed;
+}
+.chatbot-window {
+  bottom: 15px;
+  display: block;
+  margin: 80px auto 0 auto;
+  //overflow-x: hidden;
+  padding: 0;
+  position: absolute;
+  width: ~"calc(100% - 30px)";
+  .chatbot-avatar {
+    background: #f7f7f7;
+    border: 1px solid #ededed;
+    border-radius: 50%;
+    top: -50px;
     display: block;
-    left: 0;
+    height: 100px;
+    left: 50%;
+    margin: 0;
+    overflow: hidden;
     position: absolute;
-    top: 0;
-    width: 100%;
-    button {
-      color: #ededed;
-      float: right;
-      font-size: 18px;
-      margin: 5px;
-      &:hover {
-        color: #1e9afc;
-      }
-    }
+    transform: translateX(-50%);
+    width: 100px;
+    z-index: 3;
   }
   .conversation-body {
+    background: white;
+    border-radius: 6px 6px 0 0;
     display: block;
     float: left;
     max-height: 498px;
+    overflow: hidden;
     overflow-y: scroll;
-    //position: relative;
     padding: 20px 30px 20px 30px;
     width: 100%;
     &:before {
@@ -79,6 +79,7 @@ h1 {
       background: -webkit-linear-gradient(top, rgba(255,255,255,1) 68%,rgba(255,255,255,0.5) 81%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
       background: linear-gradient(to bottom, rgba(255,255,255,1) 68%,rgba(255,255,255,0.5) 81%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+      border-radius: 6px 6px 0 0;
       content: "";
       height: 100px;
       left: 0;
@@ -86,20 +87,6 @@ h1 {
       top: 0;
       width: 100%;
       z-index: 2;
-    }
-    .chatbot-avatar {
-      background: #f7f7f7;
-      border: 1px solid #ededed;
-      border-radius: 50%;
-      display: block;
-      height: 60px;
-      left: 30px;
-      margin: 0;
-      overflow: hidden;
-      position: absolute;
-      top: 20px;
-      width: 60px;
-      z-index: 3;
     }
     .conversation-bubble {
       background: #ededed;
@@ -211,32 +198,31 @@ h1 {
       }
     }
   }
-  footer {
-    background: white;
-    border-top: 1px solid #ededed;
-    display: block;
-    left: 0;
-    overflow: hidden;
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    input {
-      border: none;
-      float: left;
-      font-size: 16px;
-      padding: 8px 10px;
-      width: ~"calc(100% - 40px)";
-    }
-    button {
-      border-left: 1px solid #ededed;
-      color: #bdbdbd;
-      float: right;
-      font-size: 18px;
-      height: 34px;
-      width: 40px;
-      &:hover {
-        color: #707070;
-      }
+}
+.footer {
+  background: white;
+  border-radius: 0 0 6px 6px;
+  border-top: 1px solid #ededed;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  input {
+    border: none;
+    float: left;
+    font-size: 16px;
+    padding: 12px 16px;
+    width: ~"calc(100% - 40px)";
+  }
+  button {
+    border-left: 1px solid #ededed;
+    color: #bdbdbd;
+    float: right;
+    font-size: 18px;
+    height: 42px;
+    width: 40px;
+    &:hover {
+      color: #707070;
+      cursor: pointer;
     }
   }
 }
