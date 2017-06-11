@@ -105,13 +105,12 @@
           // FIXME: this should be a template instead of just be hardcoded
           cards.push(
           '<div class="card card-color-'+ idx +'">' +
-            '<figure class="card-thumbnail">' +
-              '<img src="'+ data.img +'" alt="hotel img">' +
-              '<figcaption class="hotel-name">' +
+            '<div class="card-thumbnail" style="background-image: url('+ data.img +');">' +
+              '<span class="hotel-name">' +
                 data.name +
-              '</figcaption>' +
+              '</span>' +
               '<span class="hotel-rating">'+ data.rating +'/5</span>' +
-            '</figure>' +
+            '</div>' +
             '<a href=' + data.url + ' class="btn-book">Go to website</a>' +
           '</div>'
         );
@@ -133,7 +132,7 @@
 
       cards.push(
         '<div class="card card-color-1">' +
-          '<div class="card-thumbnail">' +
+          '<div class="card-thumbnail" style="background-image: url('+ data.img +');">' +
             '<span class="weather-description">'+weather.weather[0].main+'</span>'+
             '<span class="city-name">'+weather.name+'</span>'+
             '<span class="weather-degrees">'+weather.main.temp+' º <span class="degree-type">C</span></span>'+
