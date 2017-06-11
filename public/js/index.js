@@ -13,7 +13,7 @@
 
     // Method to send message to the API
     self.sendMessage = function (queryMessage, cb) {
-      var API_END_POINT = 'http://test.pedropablo.xyz/';
+      var API_END_POINT = 'https://booking-chat-bot.herokuapp.com/bot';
 
       $.ajax(API_END_POINT, {
         cache: false,
@@ -47,26 +47,30 @@
       }
     };
 
-    self.renderHotels = function(type, hotels) {
-      hotels = [0,1,2]; // Hack: while we get the real data from the hotels
-      var cards = [];
+    self.renderHotels = function(type, hotelAvailability) {
+      var checkin = hotelAvailability.checkin;
+      var hotels = hotelAvailability.hotels
+      var cards = []
+
       $.each(hotels, function(idx, hotel) {
-        var fakeData = {
-          img: 'http://cdn.luxedb.com/wp-content/uploads/2013/06/Wonderful-Katikies-Hotel-in-Oia-Santorini-Greece-4.jpg',
-          hotelName: 'Katikies Hotel in Oia',
-          rating: '9.3',
-          price: '60.00',
-          currencySymbol:'$'
+        var block_id = hotel.room_min_price ? hotel.room_min_price.block_id : hotel.group_rooms[0].block_id;
+        var data = {
+          img: hotel.photo,
+          hotelName:hotel.hotel_name,
+          rating: hotel.review_score,
+          price: hotel.price,
+          currencySymbol:'$',
+          url:'https://secure.booking.com/book.html?hotel_id='+hotel.hotel_id+'&lang=en&stage=1&checkin='+checkin+'&interval=1&nr_rooms_'+ block_id +'=1'
         }
         // FIXME: this should be a template instead of just be hardcoded
         cards.push(
         '<div class="card">' +
           '<figure class="card-thumbnail">' +
-            '<img src="'+ fakeData.img +'" alt="hotel img">' +
+            '<img src="'+ data.img +'" alt="hotel img">' +
             '<figcaption class="hotel-name">' +
-              fakeData.hotelName +
+              data.hotelName +
             '</figcaption>' +
-            '<span class="hotel-rating">'+ fakeData.rating +'</span>' +
+            '<span class="hotel-rating">'+ data.rating +'</span>' +
           '</figure>' +
           '<span class="hotel-class">' +
             '<i class="fa fa-star"></i>' +
@@ -75,7 +79,7 @@
             '<i class="fa fa-star"></i>' +
             '<i class="fa fa-star"></i>' +
           '</span>' +
-          '<button type="button" name="book" class="btn-book">Book now for '+ fakeData.currencySymbol + fakeData.price +'</button>' +
+          '<a href=' + data.url + ' class="btn-book">Book now for '+ data.currencySymbol + data.price +'</a>' +
         '</div>'
       );
       });
@@ -115,10 +119,9 @@
         // Send response message to the UI
         self.renderMessage('bot', response.chat);
         // Send the hotels message to the UI
-        // self.renderHotels('bot', response.hotels); // remove this comment and uncomment the sentence
-        // if (response.hotels && response.hotels.length) {
-        //   self.renderHotels('bot', response.hotels);
-        // }
+        if (response.hotelAvailability && response.hotelAvailability.hotels) {
+          self.renderHotels('bot', response.hotelAvailability);
+        }
 
         self.scrollTopWindow(self.$conversationBubble);
       });
