@@ -13,7 +13,7 @@
 
     // Method to send message to the API
     self.sendMessage = function (queryMessage, cb) {
-      var API_END_POINT = 'http://test.pedropablo.xyz/';
+      var API_END_POINT = 'https://booking-chat-bot.herokuapp.com/bot';
 
       $.ajax(API_END_POINT, {
         cache: false,
