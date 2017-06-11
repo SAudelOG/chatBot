@@ -7,6 +7,7 @@
     self.$qInput = self.$chatWindow.find('#user-input-q');
     self.$qClear = self.$chatWindow.find('#clear-q');
     self.$conversationBubble = self.$chatWindow.find(".conversation-body");
+    self.$loadingMessageBubble = $('<div class="conversation-bubble loading-bubble">...</div>');
 
     // Method to send message to the API
     self.sendMessage = function (queryMessage, cb) {
@@ -87,6 +88,15 @@
       $bubble.scrollTop($bubble.prop("scrollHeight"));
     };
 
+    self.showLoadingMessage = function() {
+      self.$conversationBubble.append(self.$loadingMessageBubble);
+      self.scrollTopWindow(self.$conversationBubble);
+    }
+
+    self.removeLoadingMessage = function() {
+      self.$loadingMessageBubble.remove();
+    }
+
     // Initialize Listeners
     self.$qClear.on('click', function(e) {
       // Clear input
@@ -102,9 +112,11 @@
         $el.val('');
         // send message to the UI
         self.renderMessage('user', msg);
+        self.showLoadingMessage();
         // render the response
         // TODO: add class to show a response wating class
         self.sendMessage(msg, function(err, response) {
+          self.removeLoadingMessage();
           if (err) throw new Error(err);
           // Send response message to the UI
           self.renderMessage('bot', response.chat);
