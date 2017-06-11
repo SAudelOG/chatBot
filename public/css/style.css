@@ -213,7 +213,7 @@ h1 {
   background: rgba(0,0,0, 0.5);
   bottom: 0;
   color: white;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 800;
   left: 0;
   padding: 10px;
@@ -252,8 +252,8 @@ h1 {
   border-radius: 4px;
   border-bottom: 2px solid #011c41;
   color: white;
-  font-size: 18px;
-  font-weight: 300;
+  font-size: 17px;
+  font-weight: 400;
   padding: 10px 8px;
   text-align: center;
   width: 100%;
