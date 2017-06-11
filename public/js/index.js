@@ -132,7 +132,7 @@
 
       cards.push(
         '<div class="card card-color-1">' +
-          '<div class="card-thumbnail" style="background-image: url('+ data.img +');">' +
+          '<div class="card-thumbnail" style="background-image: url('+ weather.img +');">' +
             '<span class="weather-description">'+weather.weather[0].main+'</span>'+
             '<span class="city-name">'+weather.name+'</span>'+
             '<span class="weather-degrees">'+weather.main.temp+' º <span class="degree-type">C</span></span>'+
