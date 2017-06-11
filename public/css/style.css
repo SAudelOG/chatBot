@@ -10,12 +10,14 @@ body {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e9afc', endColorstr='#05377e', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
+  box-sizing: border-box;
   color: #383838;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   height: 637px;
   margin: 0;
-  padding: 15px;
+  overflow: hidden;
+  padding: 0 15px;
   position: relative;
 }
 body * {
@@ -77,7 +79,7 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
-  border: 4px solid #1e9afc;
+  border: 4px solid #cde1fe;
   border-radius: 50%;
   top: -50px;
   display: block;
@@ -229,13 +231,13 @@ h1 {
   width: 100%;
 }
 .chatbot-window .card-container .card {
-  background: #f7f7f7;
-  border-radius: 5px;
-  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
   float: left;
   margin: 0 15px;
   overflow: hidden;
-  padding: 10px;
+  padding: 0 0 15px 0;
   width: 290px;
 }
 .chatbot-window .card-container .card .card-thumbnail {
@@ -246,6 +248,24 @@ h1 {
   position: relative;
   width: 100%;
 }
+.chatbot-window .card-container .card .card-thumbnail:before {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.7+0,0.3+100 */
+  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3000000', endColorstr='#4d000000', GradientType=1);
+  /* IE6-9 */
+  content: "";
+  left: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
 .chatbot-window .card-container .card .card-thumbnail img {
   position: absolute;
   top: 50%;
@@ -255,10 +275,9 @@ h1 {
   z-index: 0;
 }
 .chatbot-window .card-container .card .card-thumbnail .hotel-name {
-  background: rgba(0,0,0, 0.5);
   bottom: 0;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   left: 0;
   padding: 10px;
@@ -266,12 +285,22 @@ h1 {
   width: 100%;
   z-index: 1;
 }
+.chatbot-window .card-container .card .card-thumbnail .city-name {
+  bottom: 0;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  left: 0;
+  padding: 5px 10px;
+  position: absolute;
+  width: 65%;
+  z-index: 1;
+}
 .chatbot-window .card-container .card .card-thumbnail .hotel-rating {
   background: #1e9afc;
   border-radius: 50%;
   color: #ffffff;
   font-size: 14px;
-  font-weight: 700;
   height: 36px;
   line-height: 36px;
   overflow: hidden;
@@ -280,6 +309,26 @@ h1 {
   text-align: center;
   top: 10px;
   width: 36px;
+  z-index: 1;
+}
+.chatbot-window .card-container .card .card-thumbnail .weather-degrees {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  bottom: 2px;
+  z-index: 1;
+}
+.chatbot-window .card-container .card .card-thumbnail .weather-description {
+  color: #ffffff;
+  font-size: 14px;
+  position: absolute;
+  left: 10px;
+  text-align: center;
+  top: 5px;
+  z-index: 1;
 }
 .chatbot-window .card-container .card .hotel-class {
   display: block;
@@ -297,11 +346,56 @@ h1 {
   border-radius: 4px;
   border-bottom: 2px solid #011c41;
   color: white;
+  display: block;
   font-size: 17px;
   font-weight: 700;
+  margin: 0 auto;
+  max-width: 80%;
   padding: 10px 8px;
   text-align: center;
   width: 100%;
+}
+.chatbot-window .card-container .card .weather-info {
+  float: left;
+  font-size: 14px;
+  padding: 15px 15px 10px 15px;
+  width: 100%;
+}
+.chatbot-window .card-container .card .weather-info .weather-title {
+  font-weight: 300;
+  font-size: 15px;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+}
+.chatbot-window .card-container .card.card-color-1 .card-thumbnail {
+  border-bottom: 6px solid #1e9afc;
+}
+.chatbot-window .card-container .card.card-color-2 .card-thumbnail {
+  border-bottom: 6px solid #fcba2c;
+}
+.chatbot-window .card-container .card.card-color-3 .card-thumbnail {
+  border-bottom: 6px solid #1eb02a;
+}
+.chatbot-window .card-container .card.card-color-4 .card-thumbnail {
+  border-bottom: 6px solid #fc0f1c;
+}
+.chatbot-window .card-container .card.card-color-5 .card-thumbnail {
+  border-bottom: 6px solid #05377e;
+}
+.chatbot-window .card-container .card.card-color-6 .card-thumbnail {
+  border-bottom: 6px solid #fed1a5;
+}
+.chatbot-window .card-container .card.card-color-7 .card-thumbnail {
+  border-bottom: 6px solid #bdbdbd;
+}
+.chatbot-window .card-container .card.card-color-8 .card-thumbnail {
+  border-bottom: 6px solid #98d89f;
+}
+.chatbot-window .card-container .card.card-color-9 .card-thumbnail {
+  border-bottom: 6px solid #fda9aa;
+}
+.chatbot-window .card-container .card.card-color-10 .card-thumbnail {
+  border-bottom: 6px solid #383838;
 }
 .chatbot-window .card-container .slick-arrow {
   position: absolute;
