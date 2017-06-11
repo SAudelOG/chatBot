@@ -19,6 +19,20 @@ body {
 body * {
   box-sizing: border-box;
 }
+body:before {
+  content: "";
+  background-image: url('../img/fondo-booking.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: -20px top;
+  height: 100%;
+  left: 0;
+  opacity: 0.2;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
 a {
   color: #00B7FF;
 }
@@ -54,8 +68,12 @@ h1 {
   width: calc(100% - 30px);
 }
 .chatbot-window .chatbot-avatar {
-  background: #f7f7f7;
-  border: 1px solid #ededed;
+  background: #ffffff;
+  background-image: url('../img/bot-avatar.svg');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 4px solid #1e9afc;
   border-radius: 50%;
   top: -50px;
   display: block;
@@ -73,6 +91,7 @@ h1 {
   border-radius: 6px 6px 0 0;
   display: block;
   float: left;
+  min-height: 100px;
   max-height: 498px;
   overflow: hidden;
   overflow-y: scroll;
