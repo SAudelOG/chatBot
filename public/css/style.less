@@ -68,7 +68,7 @@ h1 {
     background-size: 90%;
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: 0px 0px 20px rgba(255,255,255
+    box-shadow: 0px 0px 20px rgba(255,255,255, 0.5);
     border: 4px solid #1e9afc;
     border-radius: 50%;
     top: -50px;
@@ -107,6 +107,11 @@ h1 {
       top: 0;
       width: 100%;
       z-index: 2;
+    }
+    > * {
+      &:first-child {
+        margin-top: 50px;
+      }
     }
     .conversation-bubble {
       background: #ededed;
@@ -150,9 +155,11 @@ h1 {
   .card-container {
     float: left;
     margin-bottom: 20px;
+    position: relative;
     width: 100%;
     .card {
       float: left;
+      margin: 0 15px;
       width: 290px;
       .card-thumbnail {
         float: left;
@@ -166,7 +173,7 @@ h1 {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 100%;
+          height: 100%;
           z-index: 0
         }
         .hotel-name {
@@ -215,6 +222,20 @@ h1 {
         padding: 10px 8px;
         text-align: center;
         width: 100%;
+      }
+    }
+    .slick-arrow {
+      position: absolute;
+      top: 0;
+      left: -30px;
+      height: 100%;
+      font-size: 0;
+      padding: 0;
+      width: 20px;
+      z-index: 2;
+      &.slick-next {
+        left: initial;
+        right: -30px;
       }
     }
   }

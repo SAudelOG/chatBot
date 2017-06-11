@@ -8,6 +8,7 @@
   ],
   "dependencies": {
     "font-awesome": "Font-Awesome#^4.7.0",
-    "jQuery": "^3.2.1"
+    "jQuery": "^3.2.1",
+    "slick-carousel": "^1.6.0"
   }
 }
