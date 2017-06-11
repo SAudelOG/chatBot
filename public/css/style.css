@@ -299,19 +299,24 @@ h1 {
   z-index: 1;
 }
 .chatbot-window .card-container .card .card-thumbnail .hotel-rating {
-  background: #1e9afc;
-  border-radius: 50%;
+  border-radius: 0 0 0 5px;
   color: #ffffff;
   font-size: 14px;
-  height: 36px;
-  line-height: 36px;
+  font-weight: 700;
   overflow: hidden;
+  padding: 6px 10px 3px 10px;
   position: absolute;
-  right: 10px;
+  right: 0;
   text-align: center;
-  top: 10px;
-  width: 36px;
+  top: -3px;
   z-index: 1;
+}
+.chatbot-window .card-container .card .card-thumbnail .hotel-rating sup {
+  font-size: 14px;
+  font-weight: 300;
+  float: right;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 .chatbot-window .card-container .card .card-thumbnail .weather-degrees {
   color: #ffffff;
@@ -342,6 +347,7 @@ h1 {
 }
 .chatbot-window .card-container .card .hotel-class .fa {
   color: #fcba2c;
+  margin: 0 2px;
 }
 .chatbot-window .card-container .card .btn-book {
   background: #05377e;
@@ -372,32 +378,62 @@ h1 {
 .chatbot-window .card-container .card.card-color-0 .card-thumbnail {
   border-bottom: 6px solid #1e9afc;
 }
+.chatbot-window .card-container .card.card-color-0 .card-thumbnail .hotel-rating {
+  background: #1e9afc;
+}
 .chatbot-window .card-container .card.card-color-1 .card-thumbnail {
   border-bottom: 6px solid #fcba2c;
+}
+.chatbot-window .card-container .card.card-color-1 .card-thumbnail .hotel-rating {
+  background: #fcba2c;
 }
 .chatbot-window .card-container .card.card-color-2 .card-thumbnail {
   border-bottom: 6px solid #1eb02a;
 }
+.chatbot-window .card-container .card.card-color-2 .card-thumbnail .hotel-rating {
+  background: #1eb02a;
+}
 .chatbot-window .card-container .card.card-color-3 .card-thumbnail {
   border-bottom: 6px solid #fc0f1c;
+}
+.chatbot-window .card-container .card.card-color-3 .card-thumbnail .hotel-rating {
+  background: #fc0f1c;
 }
 .chatbot-window .card-container .card.card-color-4 .card-thumbnail {
   border-bottom: 6px solid #05377e;
 }
+.chatbot-window .card-container .card.card-color-4 .card-thumbnail .hotel-rating {
+  background: #05377e;
+}
 .chatbot-window .card-container .card.card-color-5 .card-thumbnail {
   border-bottom: 6px solid #fed1a5;
+}
+.chatbot-window .card-container .card.card-color-5 .card-thumbnail .hotel-rating {
+  background: #fed1a5;
 }
 .chatbot-window .card-container .card.card-color-6 .card-thumbnail {
   border-bottom: 6px solid #bdbdbd;
 }
+.chatbot-window .card-container .card.card-color-6 .card-thumbnail .hotel-rating {
+  background: #bdbdbd;
+}
 .chatbot-window .card-container .card.card-color-7 .card-thumbnail {
   border-bottom: 6px solid #98d89f;
+}
+.chatbot-window .card-container .card.card-color-7 .card-thumbnail .hotel-rating {
+  background: #98d89f;
 }
 .chatbot-window .card-container .card.card-color-8 .card-thumbnail {
   border-bottom: 6px solid #fda9aa;
 }
+.chatbot-window .card-container .card.card-color-8 .card-thumbnail .hotel-rating {
+  background: #fda9aa;
+}
 .chatbot-window .card-container .card.card-color-9 .card-thumbnail {
   border-bottom: 6px solid #383838;
+}
+.chatbot-window .card-container .card.card-color-9 .card-thumbnail .hotel-rating {
+  background: #383838;
 }
 .chatbot-window .card-container .slick-arrow {
   position: absolute;
