@@ -69,7 +69,7 @@ var BotWindow = function($chatWindow) {
                 '<i class="fa fa-star"></i>' +
                 '<i class="fa fa-star"></i>' +
               '</span>' +
-              '<button type="button" name="book" class="btn-book">Book now for'+ fakeData.currencySymbol + fakeData.price +'</button>' +
+              '<button type="button" name="book" class="btn-book">Book now for '+ fakeData.currencySymbol + fakeData.price +'</button>' +
             '</div>' +
           '</div>'
       );
