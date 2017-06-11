@@ -89,6 +89,45 @@
       $cardContainer.slick(); // Slider plugin
     };
 
+    self.renderPlaces = function(type, places) {
+      
+      var places = places.businesses;
+      var cards = []
+
+      $.each(places, function(idx, place) {
+        var data = {
+          img: place.image_url,
+          name:place.name,
+          rating: place.rating,
+          url:place.url
+        }
+        // FIXME: this should be a template instead of just be hardcoded
+        cards.push(
+        '<div class="card card-color-'+ idx +'">' +
+          '<figure class="card-thumbnail">' +
+            '<img src="'+ data.img +'" alt="hotel img">' +
+            '<figcaption class="hotel-name">' +
+              data.name +
+            '</figcaption>' +
+            '<span class="hotel-rating">'+ data.rating +'</span>' +
+          '</figure>' +
+          '<span class="hotel-class">' +
+            '<i class="fa fa-star"></i>' +
+            '<i class="fa fa-star"></i>' +
+            '<i class="fa fa-star"></i>' +
+            '<i class="fa fa-star"></i>' +
+            '<i class="fa fa-star"></i>' +
+          '</span>' +
+          '<a href=' + data.url + ' class="btn-book">Go to website</a>' +
+        '</div>'
+      );
+      });
+      var cardsString = cards.join(''); // Convert the array into a sinlge string
+      var $cardContainer = $('<div class="card-container">' + cardsString +' </div>')
+      self.$conversationBubble.append($cardContainer);
+      $cardContainer.slick(); // Slider plugin
+    };
+
     self.scrollTopWindow = function($bubble) {
       // Go to the latest message
       $bubble.scrollTop($bubble.prop("scrollHeight"));
@@ -121,6 +160,9 @@
         // Send the hotels message to the UI
         if (response.action === 'book' && response.data) {
           self.renderHotels('bot', response.data);
+        }
+        if (response.action === 'food' && response.action === 'places' && response.data) {
+          self.renderPlaces('bot', response.data);
         }
 
         self.scrollTopWindow(self.$conversationBubble);
