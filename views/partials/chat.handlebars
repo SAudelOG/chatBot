@@ -1,5 +1,34 @@
 <div class="chatbot-window">
   <div class="chatbot-avatar"></div>
+  <span>What do you want to do today?</span>
+  <nav class="chatbot-actions">
+    <ul>
+      <li>
+        <button class="chatbot-action" id="book">
+          <i class="fa"></i>
+          <span>Get a room</span>
+        </button>
+      </li>
+      <li>
+        <button class="chatbot-action" id="visit">
+          <i class="fa"></i>
+          <span>Visit</span>
+        </button>
+      </li>
+      <li>
+        <button class="chatbot-action" id="eat">
+          <i class="fa"></i>
+          <span>Eat</span>
+        </button>
+      </li>
+      <li>
+        <button class="chatbot-action" id="weather">
+          <i class="fa"></i>
+          <span>Weather</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
   <div class="conversation-body">
     {{!-- <div class="conversation-bubble bot-bubble">
       <p>this is a nice conversation bubble</p>
@@ -63,6 +92,9 @@
         <button type="button" name="book" class="btn-book">Book now for $40.00</button>
       </div>
     </div> --}}
+    <div class="conversation-bubble user-bubble">
+      ...
+    </div>
   </div>
   <footer class="footer">
     <input type="text" name="user-input" id="user-input-q" value="" placeholder="type here">
