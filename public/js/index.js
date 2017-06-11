@@ -54,6 +54,10 @@
       var hotels = hotelAvailability.hotels
       var cards = []
 
+      if (hotelAvailability.message) {
+        self.renderMessage('bot', hotelAvailability.message.split(':')[1]);
+      }
+
       $.each(hotels, function(idx, hotel) {
         var block_id = hotel.room_min_price ? hotel.room_min_price.block_id : hotel.group_rooms[0].block_id;
         var data = {
