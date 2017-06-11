@@ -7,6 +7,7 @@
     self.$qInput = self.$chatWindow.find('#user-input-q');
     self.$qClear = self.$chatWindow.find('#clear-q');
     self.$conversationBubble = self.$chatWindow.find(".conversation-body");
+    self.$actions = self.$chatWindow.find('.chatbot-actions ul li button');
     self.$loadingMessageBubble = $('<div class="conversation-bubble loading-bubble">...</div>');
 
     // Method to send message to the API
@@ -97,6 +98,31 @@
       self.$loadingMessageBubble.remove();
     }
 
+    self.handleInputBot = function($el) {
+      var msg = $el.val();
+
+      // clear Input
+      $el.val('');
+      // send message to the UI
+      self.renderMessage('user', msg);
+      self.showLoadingMessage();
+      // render the response
+      // TODO: add class to show a response wating class
+      self.sendMessage(msg, function(err, response) {
+        self.removeLoadingMessage();
+        if (err) throw new Error(err);
+        // Send response message to the UI
+        self.renderMessage('bot', response.chat);
+        // Send the hotels message to the UI
+        // self.renderHotels('bot', response.hotels); // remove this comment and uncomment the sentence
+        // if (response.hotels && response.hotels.length) {
+        //   self.renderHotels('bot', response.hotels);
+        // }
+
+        self.scrollTopWindow(self.$conversationBubble);
+      });
+    };
+
     // Initialize Listeners
     self.$qClear.on('click', function(e) {
       // Clear input
@@ -108,27 +134,34 @@
       var msg = $el.val();
       // Get tne enter key press
       if(msg !== '' && e.keyCode == 13) {
-        // clear Input
-        $el.val('');
-        // send message to the UI
-        self.renderMessage('user', msg);
-        self.showLoadingMessage();
-        // render the response
-        // TODO: add class to show a response wating class
-        self.sendMessage(msg, function(err, response) {
-          self.removeLoadingMessage();
-          if (err) throw new Error(err);
-          // Send response message to the UI
-          self.renderMessage('bot', response.chat);
-          // Send the hotels message to the UI
-          // self.renderHotels('bot', response.hotels); // remove this comment and uncomment the sentence
-          // if (response.hotels && response.hotels.length) {
-          //   self.renderHotels('bot', response.hotels);
-          // }
-
-          self.scrollTopWindow(self.$conversationBubble);
-        });
+        self.handleInputBot($el);
       }
+    });
+
+    self.$actions.on('click', function(e){
+      var $el = $(this);
+      var actionCliked = $el.attr('id');
+
+      var bookMsg = 'I want to get a room';
+      var visitMsg = 'place to visit';
+      var eatMsg = 'show me restaurants';
+      var weatherMsg = 'what\'s the weather';
+
+      switch (actionCliked) {
+        case 'book':
+          self.$qInput.val(bookMsg);
+          break;
+        case 'visit':
+          self.$qInput.val(visitMsg);
+          break;
+        case 'eat':
+          self.$qInput.val(eatMsg);
+          break;
+        case 'weather':
+          self.$qInput.val(weatherMsg);
+          break;
+      }
+      self.handleInputBot(self.$qInput);
     });
 
     return self;
@@ -136,4 +169,5 @@
 
   // Initialize botWindow
   var botWindow = new BotWindow($chatWindow);
+  window.botWindow = botWindow; // Debug
 })();
