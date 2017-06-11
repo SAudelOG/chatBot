@@ -87,7 +87,7 @@ var BotWindow = function($chatWindow) {
     var $el = $(this);
     var msg = $el.val();
     // Get tne enter key press
-    if(e.keyCode == 13) {
+    if(msg !== '' && e.keyCode == 13) {
       // clear Input
       $el.val('');
       // send message to the UI
