@@ -132,15 +132,15 @@
 
       cards.push(
         '<div class="card card-color-1">' +
-          '<div class="card-thumbnail" style="background-image: url('+ weather.img +');">' +
+          '<div class="card-thumbnail" style="background-image: url(\'https://media.giphy.com/media/26u6dryuZH98z5KuY/giphy.gif\');">' +
             '<span class="weather-description">'+weather.weather[0].main+'</span>'+
             '<span class="city-name">'+weather.name+'</span>'+
             '<span class="weather-degrees">'+weather.main.temp+' º <span class="degree-type">C</span></span>'+
-            '<article class="weather-info">'+
-              '<h6 class="weather-title">Weather today</h6>'+
-              weather.name+' is '+weather.weather[0].description+'.'+
-            '</article>'+
           '</div>' +
+          '<article class="weather-info">'+
+            '<h6 class="weather-title">Weather today</h6>'+
+            weather.name+' is '+weather.weather[0].description+'.'+
+          '</article>'+
         '</div>'
       );
 
