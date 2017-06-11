@@ -177,7 +177,10 @@
       // TODO: add class to show a response wating class
       self.sendMessage(msg, function(err, response) {
         self.removeLoadingMessage();
-        if (err) throw new Error(err);
+        if (err) {
+          self.renderMessage('bot', 'Something went wrong. Can you repeat that?');
+          throw new Error(err);
+        }
         // Send response message to the UI
         if (response.chat) {
           self.renderMessage('bot', response.chat);
