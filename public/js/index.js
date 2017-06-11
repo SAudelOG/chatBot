@@ -65,13 +65,12 @@
         // FIXME: this should be a template instead of just be hardcoded
         cards.push(
         '<div class="card card-color-'+ idx +'">' +
-          '<figure class="card-thumbnail">' +
-            '<img src="'+ data.img +'" alt="hotel img">' +
-            '<figcaption class="hotel-name">' +
+          '<div class="card-thumbnail" style="background-image: url('+ data.img +');">' +
+            '<span class="hotel-name">' +
               data.hotelName +
-            '</figcaption>' +
+            '</span>' +
             '<span class="hotel-rating">'+ data.rating +'</span>' +
-          '</figure>' +
+          '</div>' +
           '<span class="hotel-class">' +
             '<i class="fa fa-star"></i>' +
             '<i class="fa fa-star"></i>' +
