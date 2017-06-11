@@ -9,6 +9,7 @@
     self.$conversationBubble = self.$chatWindow.find(".conversation-body");
     self.$actions = self.$chatWindow.find('.chatbot-actions ul li button');
     self.$loadingMessageBubble = $('<div class="conversation-bubble loading-bubble"><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></div>');
+    self.windowHeight = $(window).height();
 
     // Method to send message to the API
     self.sendMessage = function (queryMessage, cb) {
@@ -123,6 +124,10 @@
       });
     };
 
+    self.setBodyHeight = function() {
+      $('body').height(self.windowHeight)
+    }
+
     // Initialize Listeners
     self.$qClear.on('click', function(e) {
       // Clear input
@@ -164,6 +169,10 @@
       self.handleInputBot(self.$qInput);
     });
 
+    // Initialize bot
+    self.setBodyHeight();
+
+    // Return constructor
     return self;
   }
 
