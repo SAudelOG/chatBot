@@ -46,15 +46,18 @@
     };
 
     self.renderHotels = function(type, hotels) {
-      hotels = [0,1,2]; // Hack: while we get the real data from the hotels
+      var checkin = hotels.checkin;
+      hotels = hotels.hotels; // Hack: while we get the real data from the hotels
       var cards = [];
       $.each(hotels, function(idx, hotel) {
+        var interval =
         var fakeData = {
-          img: 'http://cdn.luxedb.com/wp-content/uploads/2013/06/Wonderful-Katikies-Hotel-in-Oia-Santorini-Greece-4.jpg',
-          hotelName: 'Katikies Hotel in Oia',
-          rating: '9.3',
-          price: '60.00',
+          img: hotel.photo,
+          hotelName:hotel.hotel_name ,
+          rating: hotel.review_score,
+          price: hotel.price,
           currencySymbol:'$'
+          url:'https://secure.booking.com/book.html?hotel_id='+hotel.hotel_id+'&lang=en&stage=1&checkin='+checkin+'&interval=1&nr_rooms_'+hotel.room_min_price.block_id+'=1'
         }
         // FIXME: this should be a template instead of just be hardcoded
         cards.push(
@@ -122,9 +125,9 @@
           self.renderMessage('bot', response.chat);
           // Send the hotels message to the UI
           // self.renderHotels('bot', response.hotels); // remove this comment and uncomment the sentence
-          // if (response.hotels && response.hotels.length) {
-          //   self.renderHotels('bot', response.hotels);
-          // }
+            if (response.hotelAvailability.hotels && response.hotelAvailability.hotels.length) {
+              self.renderHotels('bot', response.hotelAvailability);
+            }
 
           self.scrollTopWindow(self.$conversationBubble);
         });
