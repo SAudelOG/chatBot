@@ -244,7 +244,7 @@ h1 {
   background-position: center;
   background-size: cover;
   float: left;
-  margin: 0;
+  margin: 0 0 15px 0;
   height: 180px;
   overflow: hidden;
   position: relative;
@@ -366,7 +366,7 @@ h1 {
 .chatbot-window .card-container .card .weather-info {
   float: left;
   font-size: 14px;
-  padding: 15px 15px 10px 15px;
+  padding: 0 15px 10px 15px;
   width: 100%;
 }
 .chatbot-window .card-container .card .weather-info .weather-title {
