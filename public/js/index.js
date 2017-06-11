@@ -3,6 +3,7 @@
 
   var BotWindow = function($chatWindow) {
     var self = this;
+    self.sessionId = undefined;
     self.$chatWindow = $chatWindow;
     self.$qInput = self.$chatWindow.find('#user-input-q');
     self.$qClear = self.$chatWindow.find('#clear-q');
@@ -19,6 +20,7 @@
         cache: false,
         dataType: 'json',
         data: {
+          sessionId: self.sessionId,
           q : queryMessage
         },
         error: function(request, status, err) {
@@ -128,7 +130,7 @@
 
       var weather = forecast;
       var cards = []
-      
+
       cards.push(
         '<div class="card card-color-'+ idx +'">' +
           '<div class="card-thumbnail">' +
@@ -142,7 +144,7 @@
           '</div>' +
         '</div>'
       );
-      
+
 
       var cardsString = cards.join(''); // Convert the array into a sinlge string
       var $cardContainer = $('<div class="card-container">' + cardsString +' </div>')
@@ -197,6 +199,18 @@
       $('body').height(self.windowHeight)
     }
 
+    self.setSessionId = function() {
+      var botSession = JSON.parse(window.localStorage.getItem('botsession'));
+      if (!botSession) {
+        var rdmSessionId = Math.floor(Math.random() * (9999999999 - 1111111 + 1)) + 1111111
+        window.localStorage.setItem('botsession', JSON.stringify(rdmSessionId));
+        self.sessionId = rdmSessionId;
+      } else {
+        self.sessionId = botSession;
+      }
+      console.log('your session id: ', self.sessionId);
+    }
+
     // Initialize Listeners
     self.$qClear.on('click', function(e) {
       // Clear input
@@ -239,6 +253,7 @@
     });
 
     // Initialize bot
+    self.setSessionId();
     self.setBodyHeight();
 
     // Return constructor
