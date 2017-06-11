@@ -38,8 +38,10 @@
 
     self.renderMessage = function(type, msg) {
       self.$conversationBubble.append('<div class="conversation-bubble '+ type +'-bubble"><p>'+ msg +'</p></div>');
-      // Go to the latest message
-      self.$conversationBubble.scrollTop(self.$conversationBubble.prop("scrollHeight"));
+
+      if (type === 'user') {
+        self.scrollTopWindow(self.$conversationBubble);
+      }
     };
 
     self.renderHotels = function(type, hotels) {
@@ -80,8 +82,12 @@
       $cardContainer.slick(); // Slider plugin
     };
 
-    // Initialize Listeners
+    self.scrollTopWindow = function($bubble) {
+      // Go to the latest message
+      $bubble.scrollTop($bubble.prop("scrollHeight"));
+    };
 
+    // Initialize Listeners
     self.$qClear.on('click', function(e) {
       // Clear input
       self.$qInput.val('');
@@ -103,10 +109,12 @@
           // Send response message to the UI
           self.renderMessage('bot', response.chat);
           // Send the hotels message to the UI
-          self.renderHotels('bot', response.hotels); // remove this comment and uncomment the sentence
+          // self.renderHotels('bot', response.hotels); // remove this comment and uncomment the sentence
           // if (response.hotels && response.hotels.length) {
           //   self.renderHotels('bot', response.hotels);
           // }
+
+          self.scrollTopWindow(self.$conversationBubble);
         });
       }
     });
