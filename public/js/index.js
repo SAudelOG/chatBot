@@ -25,7 +25,7 @@
         },
         error: function(request, status, err) {
           var fakeResponse = {
-            chat: "this is a fake response just for testing"
+            chat: "Something went wrong. Can you repeat that?"
           }
           if (status == "timeout") {
             // send fake data
