@@ -70,7 +70,7 @@
             '<figcaption class="hotel-name">' +
               data.hotelName +
             '</figcaption>' +
-            '<span class="hotel-rating">'+ data.rating +'</span>' +
+            '<span class="hotel-rating">'+ data.rating +'/10</span>' +
           '</figure>' +
           '<span class="hotel-class">' +
             '<i class="fa fa-star"></i>' +
@@ -90,7 +90,7 @@
     };
 
     self.renderPlaces = function(type, places) {
-      
+
       var places = places.businesses;
       var cards = []
 
@@ -109,15 +109,8 @@
             '<figcaption class="hotel-name">' +
               data.name +
             '</figcaption>' +
-            '<span class="hotel-rating">'+ data.rating +'</span>' +
+            '<span class="hotel-rating">'+ data.rating +'/5</span>' +
           '</figure>' +
-          '<span class="hotel-class">' +
-            '<i class="fa fa-star"></i>' +
-            '<i class="fa fa-star"></i>' +
-            '<i class="fa fa-star"></i>' +
-            '<i class="fa fa-star"></i>' +
-            '<i class="fa fa-star"></i>' +
-          '</span>' +
           '<a href=' + data.url + ' class="btn-book">Go to website</a>' +
         '</div>'
       );
@@ -156,12 +149,14 @@
         self.removeLoadingMessage();
         if (err) throw new Error(err);
         // Send response message to the UI
-        self.renderMessage('bot', response.chat);
+        if (response.chat) {
+          self.renderMessage('bot', response.chat);
+        }
         // Send the hotels message to the UI
         if (response.action === 'book' && response.data) {
           self.renderHotels('bot', response.data);
         }
-        if (response.action === 'food' && response.action === 'places' && response.data) {
+        if ((response.action === 'food' || response.action === 'places') && response.data) {
           self.renderPlaces('bot', response.data);
         }
 
