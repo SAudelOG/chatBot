@@ -131,8 +131,8 @@
       var cards = []
 
       cards.push(
-        '<div class="card card-color-'+ idx +'">' +
-          '<div class="card-thumbnail" style="background-image: url('+ data.img +');">' +
+        '<div class="card card-color-1">' +
+          '<div class="card-thumbnail" style="background-image: url('+ weather.img +');">' +
             '<span class="weather-description">'+weather.weather[0].main+'</span>'+
             '<span class="city-name">'+weather.name+'</span>'+
             '<span class="weather-degrees">'+weather.main.temp+' º <span class="degree-type">C</span></span>'+
@@ -177,7 +177,10 @@
       // TODO: add class to show a response wating class
       self.sendMessage(msg, function(err, response) {
         self.removeLoadingMessage();
-        if (err) throw new Error(err);
+        if (err) {
+          self.renderMessage('bot', 'Something went wrong. Can you repeat that?');
+          throw new Error(err);
+        }
         // Send response message to the UI
         if (response.chat) {
           self.renderMessage('bot', response.chat);
@@ -185,6 +188,9 @@
         // Send the hotels message to the UI
         if (response.action === 'book' && response.data) {
           self.renderHotels('bot', response.data);
+        }
+        if (response.action === 'weather' && response.data) {
+          self.renderWeather('bot', response.data);
         }
         if ((response.action === 'food' || response.action === 'places') && response.data) {
           self.renderPlaces('bot', response.data);
@@ -232,7 +238,7 @@
       var bookMsg = 'I want to get a room';
       var visitMsg = 'place to visit';
       var eatMsg = 'show me restaurants';
-      var weatherMsg = 'what\'s the weather';
+      var weatherMsg = 'how\'s the weather';
 
       switch (actionCliked) {
         case 'book':
