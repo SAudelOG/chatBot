@@ -1,35 +1,35 @@
 <div class="chatbot-window">
   <div class="chatbot-avatar"></div>
-  <span>What do you want to do today?</span>
-  <nav class="chatbot-actions">
-    <ul>
-      <li>
-        <button class="chatbot-action" id="book">
-          <i class="fa"></i>
-          <span>Get a room</span>
-        </button>
-      </li>
-      <li>
-        <button class="chatbot-action" id="visit">
-          <i class="fa"></i>
-          <span>Visit</span>
-        </button>
-      </li>
-      <li>
-        <button class="chatbot-action" id="eat">
-          <i class="fa"></i>
-          <span>Eat</span>
-        </button>
-      </li>
-      <li>
-        <button class="chatbot-action" id="weather">
-          <i class="fa"></i>
-          <span>Weather</span>
-        </button>
-      </li>
-    </ul>
-  </nav>
   <div class="conversation-body">
+    <nav class="chatbot-actions">
+      <ul>
+        <li class="conversation-starter">Let's do something cool today!</li>
+        <li>
+          <button class="chatbot-action" id="book">
+            <i class="fa fa-bed"></i>
+            <span>Get a room</span>
+          </button>
+        </li>
+        <li>
+          <button class="chatbot-action" id="visit">
+            <i class="fa fa-map-marker"></i>
+            <span>Visit</span>
+          </button>
+        </li>
+        <li>
+          <button class="chatbot-action" id="eat">
+            <i class="fa fa-cutlery"></i>
+            <span>Eat</span>
+          </button>
+        </li>
+        <li>
+          <button class="chatbot-action" id="weather">
+            <i class="fa fa-sun-o"></i>
+            <span>Weather</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
     {{!-- <div class="conversation-bubble bot-bubble">
       <p>this is a nice conversation bubble</p>
     </div>
@@ -92,7 +92,7 @@
         <button type="button" name="book" class="btn-book">Book now for $40.00</button>
       </div>
     </div> --}}
-    <div class="conversation-bubble user-bubble">
+    <div class="conversation-bubble loading-bubble">
       ...
     </div>
   </div>

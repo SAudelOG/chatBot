@@ -99,30 +99,60 @@ h1 {
   max-height: 498px;
   overflow: hidden;
   overflow-y: scroll;
-  padding: 20px 30px 20px 30px;
+  padding: 190px 30px 20px 30px;
   width: 100%;
 }
-.chatbot-window .conversation-body:before {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+68,ffffff+81,ffffff+100&1+68,0.5+81,0+100 */
-  background: -moz-linear-gradient(top, #ffffff 68%, rgba(255, 255, 255, 0.5) 81%, rgba(255, 255, 255, 0) 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #ffffff 68%, rgba(255, 255, 255, 0.5) 81%, rgba(255, 255, 255, 0) 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #ffffff 68%, rgba(255, 255, 255, 0.5) 81%, rgba(255, 255, 255, 0) 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0);
-  /* IE6-9 */
+.chatbot-window .conversation-body .chatbot-actions {
+  background: #ffffff;
+  border-bottom: 1px solid #ededed;
   border-radius: 6px 6px 0 0;
-  content: "";
-  height: 100px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  float: left;
   left: 0;
+  margin: 0 0 20px;
+  padding-top: 60px;
   position: absolute;
   top: 0;
+  text-align: center;
   width: 100%;
   z-index: 2;
 }
-.chatbot-window .conversation-body > *:first-child {
-  margin-top: 70px;
+.chatbot-window .conversation-body .chatbot-actions ul {
+  float: left;
+  margin-top: 0;
+  padding: 0 15px;
+  width: 100%;
+}
+.chatbot-window .conversation-body .chatbot-actions ul li {
+  border-left: 1px solid #ededed;
+  float: left;
+  list-style: none;
+  width: 25%;
+}
+.chatbot-window .conversation-body .chatbot-actions ul li.conversation-starter {
+  color: #707070;
+  float: left;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+.chatbot-window .conversation-body .chatbot-actions ul li:nth-child(1),
+.chatbot-window .conversation-body .chatbot-actions ul li:nth-child(2) {
+  border-left: none;
+}
+.chatbot-window .conversation-body .chatbot-actions ul li button {
+  color: #707070;
+  font-weight: 600;
+}
+.chatbot-window .conversation-body .chatbot-actions ul li span,
+.chatbot-window .conversation-body .chatbot-actions ul li i {
+  display: block;
+  width: 100%;
+}
+.chatbot-window .conversation-body .chatbot-actions ul li i {
+  color: #bdbdbd;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 .chatbot-window .conversation-body .conversation-bubble {
   background: #ededed;
