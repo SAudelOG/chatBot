@@ -10,6 +10,9 @@ body {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e9afc', endColorstr='#05377e', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
+  color: #383838;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
   height: 637px;
   margin: 0;
   padding: 15px;
@@ -119,11 +122,12 @@ h1 {
   z-index: 2;
 }
 .chatbot-window .conversation-body > *:first-child {
-  margin-top: 50px;
+  margin-top: 70px;
 }
 .chatbot-window .conversation-body .conversation-bubble {
   background: #ededed;
   border-radius: 4px;
+  box-shadow: 2px 2px 0px #dcdcdc;
   clear: both;
   float: left;
   margin-bottom: 20px;
@@ -131,6 +135,7 @@ h1 {
   padding: 10px;
   position: relative;
   width: auto;
+  z-index: 1;
 }
 .chatbot-window .conversation-body .conversation-bubble:before {
   background: #ededed;
@@ -138,16 +143,18 @@ h1 {
   display: block;
   height: 8px;
   position: absolute;
-  top: -3px;
-  left: 6px;
+  top: 6px;
+  left: -3px;
   width: 8px;
   transform: rotate(45deg);
+  z-index: -1;
 }
 .chatbot-window .conversation-body .conversation-bubble p:last-child {
   margin-bottom: 0;
 }
 .chatbot-window .conversation-body .conversation-bubble.user-bubble {
   background: #cde1fe;
+  box-shadow: 2px 2px 0px #b2cef6;
   float: right;
 }
 .chatbot-window .conversation-body .conversation-bubble.user-bubble:before {
@@ -155,7 +162,20 @@ h1 {
   top: 6px;
   left: initial;
   right: -3px;
+  z-index: -1;
+}
+.chatbot-window .conversation-body .conversation-bubble.user-bubble:after {
+  background: #b2cef6;
+  content: "";
+  display: block;
+  height: 7px;
+  position: absolute;
+  width: 8px;
+  top: 8px;
+  left: initial;
+  right: -6px;
   transform: rotate(135deg);
+  z-index: -2;
 }
 .chatbot-window .card-container {
   float: left;
@@ -164,8 +184,13 @@ h1 {
   width: 100%;
 }
 .chatbot-window .card-container .card {
+  background: #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.06);
   float: left;
   margin: 0 15px;
+  overflow: hidden;
+  padding: 10px;
   width: 290px;
 }
 .chatbot-window .card-container .card .card-thumbnail {
@@ -189,6 +214,7 @@ h1 {
   bottom: 0;
   color: white;
   font-size: 22px;
+  font-weight: 800;
   left: 0;
   padding: 10px;
   position: absolute;
@@ -200,7 +226,7 @@ h1 {
   border-radius: 50%;
   color: #ffffff;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 800;
   height: 36px;
   line-height: 36px;
   overflow: hidden;
@@ -224,8 +250,10 @@ h1 {
 .chatbot-window .card-container .card .btn-book {
   background: #05377e;
   border-radius: 4px;
+  border-bottom: 2px solid #011c41;
   color: white;
   font-size: 18px;
+  font-weight: 300;
   padding: 10px 8px;
   text-align: center;
   width: 100%;
@@ -254,6 +282,7 @@ h1 {
 }
 .footer input {
   border: none;
+  color: #383838;
   float: left;
   font-size: 16px;
   padding: 12px 16px;
