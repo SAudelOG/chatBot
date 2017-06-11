@@ -50,15 +50,17 @@
     self.renderHotels = function(type, hotelAvailability) {
       var checkin = hotelAvailability.checkin;
       var hotels = hotelAvailability.hotels
-      var cards = [];
+      var cards = []
+
       $.each(hotels, function(idx, hotel) {
+        var block_id = hotel.room_min_price ? hotel.room_min_price.block_id : hotel.group_rooms[0].block_id;
         var data = {
           img: hotel.photo,
           hotelName:hotel.hotel_name,
           rating: hotel.review_score,
           price: hotel.price,
           currencySymbol:'$',
-          url:'https://secure.booking.com/book.html?hotel_id='+hotel.hotel_id+'&lang=en&stage=1&checkin='+checkin+'&interval=1&nr_rooms_'+hotel.room_min_price.block_id+'=1'
+          url:'https://secure.booking.com/book.html?hotel_id='+hotel.hotel_id+'&lang=en&stage=1&checkin='+checkin+'&interval=1&nr_rooms_'+ block_id +'=1'
         }
         // FIXME: this should be a template instead of just be hardcoded
         cards.push(
