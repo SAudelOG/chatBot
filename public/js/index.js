@@ -64,7 +64,7 @@
         }
         // FIXME: this should be a template instead of just be hardcoded
         cards.push(
-        '<div class="card">' +
+        '<div class="card card-color-'+ idx +'">' +
           '<figure class="card-thumbnail">' +
             '<img src="'+ data.img +'" alt="hotel img">' +
             '<figcaption class="hotel-name">' +
@@ -119,8 +119,8 @@
         // Send response message to the UI
         self.renderMessage('bot', response.chat);
         // Send the hotels message to the UI
-        if (response.hotelAvailability && response.hotelAvailability.hotels) {
-          self.renderHotels('bot', response.hotelAvailability);
+        if (response.action === 'book' && response.data) {
+          self.renderHotels('bot', response.data);
         }
 
         self.scrollTopWindow(self.$conversationBubble);
