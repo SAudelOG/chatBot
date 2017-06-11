@@ -120,8 +120,8 @@
         self.$conversationBubble.append($cardContainer);
         $cardContainer.slick(); // Slider plugin
       } else {
-        self.renderMessage('bot', 'no places were found there');
         // No results found
+        self.renderMessage('bot', 'no places were found there');
       }
     };
 
