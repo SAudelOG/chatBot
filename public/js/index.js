@@ -92,32 +92,36 @@
 
       var places = places.businesses;
       var cards = []
-
-      $.each(places, function(idx, place) {
-        var data = {
-          img: place.image_url,
-          name:place.name,
-          rating: place.rating,
-          url:place.url
-        }
-        // FIXME: this should be a template instead of just be hardcoded
-        cards.push(
-        '<div class="card card-color-'+ idx +'">' +
-          '<figure class="card-thumbnail">' +
-            '<img src="'+ data.img +'" alt="hotel img">' +
-            '<figcaption class="hotel-name">' +
-              data.name +
-            '</figcaption>' +
-            '<span class="hotel-rating">'+ data.rating +'/5</span>' +
-          '</figure>' +
-          '<a href=' + data.url + ' class="btn-book">Go to website</a>' +
-        '</div>'
-      );
-      });
-      var cardsString = cards.join(''); // Convert the array into a sinlge string
-      var $cardContainer = $('<div class="card-container">' + cardsString +' </div>')
-      self.$conversationBubble.append($cardContainer);
-      $cardContainer.slick(); // Slider plugin
+      if (places.length) {
+        $.each(places, function(idx, place) {
+          var data = {
+            img: place.image_url,
+            name:place.name,
+            rating: place.rating,
+            url:place.url
+          }
+          // FIXME: this should be a template instead of just be hardcoded
+          cards.push(
+          '<div class="card card-color-'+ idx +'">' +
+            '<figure class="card-thumbnail">' +
+              '<img src="'+ data.img +'" alt="hotel img">' +
+              '<figcaption class="hotel-name">' +
+                data.name +
+              '</figcaption>' +
+              '<span class="hotel-rating">'+ data.rating +'/5</span>' +
+            '</figure>' +
+            '<a href=' + data.url + ' class="btn-book">Go to website</a>' +
+          '</div>'
+        );
+        });
+        var cardsString = cards.join(''); // Convert the array into a sinlge string
+        var $cardContainer = $('<div class="card-container">' + cardsString +' </div>')
+        self.$conversationBubble.append($cardContainer);
+        $cardContainer.slick(); // Slider plugin
+      } else {
+        // No results found
+        self.renderMessage('bot', 'no places were found there');
+      }
     };
 
     self.scrollTopWindow = function($bubble) {
