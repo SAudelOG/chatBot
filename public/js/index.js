@@ -44,21 +44,23 @@ var BotWindow = function($chatWindow) {
   self.renderHotels = function(type, hotels) {
     hotels = [0,1]; // Hack: while we get the real data from the hotels
     $.each(hotels, function(idx, hotel) {
-      var dataFake = {
+      var fakeData = {
         img: 'http://cdn.luxedb.com/wp-content/uploads/2013/06/Wonderful-Katikies-Hotel-in-Oia-Santorini-Greece-4.jpg',
         hotelName: 'Katikies Hotel in Oia',
         rating: '9.3',
+        price: '60.00',
+        currencySymbol:'$'
       }
       // FIXME: this should be a template instead of just be hardcoded
       self.$conversationBubble.append(
         '<div class="card-container">' +
           '<div class="card">' +
             '<figure class="card-thumbnail">' +
-              '<img src="'+ dataFake.img +'" alt="hotel img">' +
+              '<img src="'+ fakeData.img +'" alt="hotel img">' +
               '<figcaption class="hotel-name">' +
-                dataFake.hotelName +
+                fakeData.hotelName +
               '</figcaption>' +
-              '<span class="hotel-rating">'+ dataFake.rating +'</span>' +
+              '<span class="hotel-rating">'+ fakeData.rating +'</span>' +
             '</figure>' +
               '<span class="hotel-class">' +
                 '<i class="fa fa-star"></i>' +
@@ -67,7 +69,7 @@ var BotWindow = function($chatWindow) {
                 '<i class="fa fa-star"></i>' +
                 '<i class="fa fa-star"></i>' +
               '</span>' +
-              '<button type="button" name="book" class="btn-book">Book now for $40.00</button>' +
+              '<button type="button" name="book" class="btn-book">Book now for'+ fakeData.currencySymbol + fakeData.price +'</button>' +
             '</div>' +
           '</div>'
       );
