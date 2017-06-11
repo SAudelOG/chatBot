@@ -121,6 +121,32 @@
       $cardContainer.slick(); // Slider plugin
     };
 
+    self.renderWeather = function(type, forecast) {
+
+      var weather = forecast;
+      var cards = []
+      
+      cards.push(
+        '<div class="card card-color-'+ idx +'">' +
+          '<div class="card-thumbnail">' +
+            '<span class="weather-description">'+weather.weather[0].main+'</span>'+
+            '<span class="city-name">'+weather.name+'</span>'+
+            '<span class="weather-degrees">'+weather.main.temp+' º <span class="degree-type">C</span></span>'+
+            '<article class="weather-info">'+
+              '<h6 class="weather-title">Weather today</h6>'+
+              weather.name+' is '+weather.weather[0].description+'.'+
+            '</article>'+
+          '</div>' +
+        '</div>'
+      );
+      
+
+      var cardsString = cards.join(''); // Convert the array into a sinlge string
+      var $cardContainer = $('<div class="card-container">' + cardsString +' </div>')
+      self.$conversationBubble.append($cardContainer);
+      $cardContainer.slick(); // Slider plugin
+    };
+
     self.scrollTopWindow = function($bubble) {
       // Go to the latest message
       $bubble.scrollTop($bubble.prop("scrollHeight"));
