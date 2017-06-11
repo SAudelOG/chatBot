@@ -132,7 +132,7 @@
       var cards = []
 
       cards.push(
-        '<div class="card card-color-'+ idx +'">' +
+        '<div class="card card-color-1">' +
           '<div class="card-thumbnail">' +
             '<span class="weather-description">'+weather.weather[0].main+'</span>'+
             '<span class="city-name">'+weather.name+'</span>'+
@@ -187,6 +187,9 @@
         if (response.action === 'book' && response.data) {
           self.renderHotels('bot', response.data);
         }
+        if (response.action === 'weather' && response.data) {
+          self.renderWeather('bot', response.data);
+        }
         if ((response.action === 'food' || response.action === 'places') && response.data) {
           self.renderPlaces('bot', response.data);
         }
@@ -233,7 +236,7 @@
       var bookMsg = 'I want to get a room';
       var visitMsg = 'place to visit';
       var eatMsg = 'show me restaurants';
-      var weatherMsg = 'what\'s the weather';
+      var weatherMsg = 'how\'s the weather';
 
       switch (actionCliked) {
         case 'book':
