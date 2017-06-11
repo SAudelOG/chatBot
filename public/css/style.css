@@ -207,6 +207,21 @@ h1 {
   transform: rotate(135deg);
   z-index: -2;
 }
+.chatbot-window .conversation-body .conversation-bubble.loading-bubble .fa-circle {
+  font-size: 6px;
+  font-weight: 600;
+  margin-right: 2px;
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+.chatbot-window .conversation-body .conversation-bubble.loading-bubble .fa-circle:nth-child(2) {
+  animation-delay: .2s;
+}
+.chatbot-window .conversation-body .conversation-bubble.loading-bubble .fa-circle:nth-child(3) {
+  animation-delay: .4s;
+}
 .chatbot-window .card-container {
   float: left;
   margin-bottom: 20px;
@@ -329,4 +344,15 @@ h1 {
 .footer button:hover {
   color: #707070;
   cursor: pointer;
+}
+@keyframes blink {
+  0% {
+    opacity: .2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
 }

@@ -8,7 +8,7 @@
     self.$qClear = self.$chatWindow.find('#clear-q');
     self.$conversationBubble = self.$chatWindow.find(".conversation-body");
     self.$actions = self.$chatWindow.find('.chatbot-actions ul li button');
-    self.$loadingMessageBubble = $('<div class="conversation-bubble loading-bubble">...</div>');
+    self.$loadingMessageBubble = $('<div class="conversation-bubble loading-bubble"><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></div>');
 
     // Method to send message to the API
     self.sendMessage = function (queryMessage, cb) {
